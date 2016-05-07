@@ -3,7 +3,7 @@
 # from the redeployment chain. This is Go afterall and we like our builds
 # minimal. Using volumes in this way we don't even need to recreate the
 # container. We can simply restart the existing one.
-local-hooks:
+swarm-hooks:
   build: .
   dockerfile: local.df
   volumes:
