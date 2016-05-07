@@ -11,6 +11,7 @@ prepare:
 	docker run -it --rm -v "$(shell pwd)":/work -w /work node:4.1.2 npm install
 
 iterate:
+	docker-compose build swarm-hooks
 	docker-compose up -d
 
 stop:
