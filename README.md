@@ -26,10 +26,10 @@ A developer will almost always want a local build of the service running while t
     #    open http://localhost:7890
     
     #  Watch the build logs:
-    docker-compose logs service-iterate
+    docker-compose logs swarm-hooks
     
     #  Watch the functional / integration tests:
-    docker-compose logs integration
+    docker-compose logs integ
     
     #  Watch the service metrics:
     #    open http://localhost:3000
