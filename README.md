@@ -4,20 +4,28 @@ Docker Swarm provides a Docker Engine abstraction on top of a cluster of machine
 
 ## Contributing
 
+    # Get the code
     git clone https://github.com/buildertools/swarm-hooks.git
+
+    # Start iterating
     make iterate
+
     # Do your work:
     #  Use the running service:
     #    open http://localhost:7890
+    
     #  Watch the build logs:
     docker-compose logs service-iterate
+    
     #  Watch the functional / integration tests:
     docker-compose logs integration
+    
     #  Watch the service metrics:
     #    open http://localhost:3000
     
     # Stop working for the day:
     make stop
+    
     # Produce a versioned release image
     make release
 
