@@ -8,7 +8,7 @@ The service source is Go, and the scaffolding is a mix of Docker tooling, Go, Ja
 
 A developer will almost always want a local build of the service running while they are developing. Rather than leave setup to contirbutors this project uses a simple Docker based development environment and iteration scaffold. The following set of commands will handle almost every development phase. This system automates the whole lifecycle on source change events. It also manages a fully tooled local runtime environment including time series database, dashboarding, and key-value stores.
 
-### Get the Code and Get Started
+#### Get the Code and Get Started
 
     # Get the code
     git clone https://github.com/buildertools/swarm-hooks.git
@@ -16,7 +16,7 @@ A developer will almost always want a local build of the service running while t
     # Prepare the first time to get tooling
     make prepare
 
-### Local Iteration
+#### Local Iteration
 
     # Start iterating
     make iterate
@@ -37,12 +37,13 @@ A developer will almost always want a local build of the service running while t
     # Stop working for the day:
     make stop
 
-### Updating Dependencies or Build System
+#### Updating Dependencies or Build System
 
     make stop
+    # Make your changes
     make iterate
 
-### Ship it
+#### Ship it
 
     # Produce a versioned release image
     make release
