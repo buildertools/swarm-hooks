@@ -11,10 +11,10 @@ prepare:
 	docker run -it --rm -v "$(shell pwd)":/work -w /work node:4.1.2 npm install
 
 iterate:
-	docker-compose up -d
+	docker-compose -f iterate.dc up -d
 
 stop:
-	docker-compose stop
+	docker-compose -f iterate.dc stop
 
 # Using `docker cp` to copy a file out of an image requires three steps:
 #  1. Create a container from the target image
@@ -32,3 +32,4 @@ build:
 release: build
 	docker build -t buildertools/swarm-hooks:latest -f release.df .
 	docker tag buildertools/swarm-hooks:latest buildertools/swarm-hooks:alpha
+

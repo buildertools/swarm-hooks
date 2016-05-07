@@ -1,0 +1,23 @@
+#
+# This Dockerfile is used for local development and is intended for use with
+# a compose environment which weaves in the source via volume at
+# /src/buildertools/src/github.com/buildertools/swarm-hooks.
+# This image uses gulpjs to watch those source files, build them on changes,
+# run tests, gofmt, etc, and finally relaunch the service if successful.
+#
+
+FROM golang:alpine
+
+RUN apk --update add --no-cache git nodejs
+RUN npm install --global gulp
+
+ENV GOPATH=/src/buildertools PATH=$PATH:/src/buildertools/bin GODEBUG=netdns=cgo
+RUN mkdir -p /src/buildertools/src/github.com/buildertools/swarm-hooks && mkdir -p /src/buildertools/bin
+RUN go get github.com/codegangsta/cli && \
+    go get github.com/rcrowley/go-metrics && \
+    go get github.com/allingeek/go-metrics-influxdb
+
+VOLUME ["/src/buildertools/src/github.com/buildertools/swarm-hooks", "/src/buildertools/pkg", "/src/buildertools/bin"]
+WORKDIR /src/buildertools/src/github.com/buildertools/swarm-hooks
+
+CMD ["gulp"]
