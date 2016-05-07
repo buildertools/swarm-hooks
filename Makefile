@@ -11,10 +11,10 @@ prepare:
 	docker run -it --rm -v "$(shell pwd)":/work -w /work node:4.1.2 npm install
 
 iterate:
-	docker-compose -f iterate.dc up -d
+	docker-compose up -d
 
 stop:
-	docker-compose -f iterate.dc stop
+	docker-compose stop
 
 # Using `docker cp` to copy a file out of an image requires three steps:
 #  1. Create a container from the target image
