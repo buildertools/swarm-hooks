@@ -16,10 +16,10 @@ local-hooks:
    - influxdb:influxdb
 
 # Integration tests that run every 30 seconds against the local-esc
-local-integ:
-  build: ./integ
-  links:
-   - local-hooks:hooks
+#local-integ:
+#  build: ./integ
+#  links:
+#   - local-hooks:hooks
 
 redis:
   image: redis

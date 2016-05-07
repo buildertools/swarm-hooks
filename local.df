@@ -14,8 +14,7 @@ RUN npm install --global gulp
 ENV GOPATH=/src/buildertools PATH=$PATH:/src/buildertools/bin GODEBUG=netdns=cgo
 RUN mkdir -p /src/buildertools/src/github.com/buildertools/swarm-hooks && mkdir -p /src/buildertools/bin
 RUN go get github.com/codegangsta/cli && \
-    go get github.com/rcrowley/go-metrics && \
-    go get github.com/allingeek/go-metrics-influxdb
+    go get github.com/Sirupsen/logrus
 
 VOLUME ["/src/buildertools/src/github.com/buildertools/swarm-hooks", "/src/buildertools/pkg", "/src/buildertools/bin"]
 WORKDIR /src/buildertools/src/github.com/buildertools/swarm-hooks
