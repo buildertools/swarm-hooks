@@ -3,7 +3,7 @@ echo-chain:
    - "*"
   pre:
    - announce:
-      - output: stdout
+      output: stdout
   post:
    - confirm:
-      - output: stdout
+      output: stdout
