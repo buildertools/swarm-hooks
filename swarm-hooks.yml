@@ -1,0 +1,9 @@
+echo-chain:
+  include:
+   - "*"
+  pre:
+   - announce:
+      - output: stdout
+  post:
+   - confirm:
+      - output: stdout

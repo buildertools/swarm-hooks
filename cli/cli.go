@@ -3,10 +3,15 @@ package cli
 import (
 	"fmt"
 	log "github.com/Sirupsen/logrus"
+	"github.com/buildertools/swarm-hooks/chain"
 	"github.com/buildertools/swarm-hooks/version"
 	"github.com/codegangsta/cli"
 	"os"
 	"path"
+)
+
+var (
+	chains chain.Chains
 )
 
 func Run() {
@@ -22,11 +27,15 @@ func Run() {
 			Usage:  "debug mode",
 			EnvVar: "DEBUG",
 		},
-
 		cli.StringFlag{
 			Name:  "log-level, l",
 			Value: "info",
 			Usage: fmt.Sprintf("Log level (options: debug, info, panic)"),
+		},
+		cli.StringFlag{
+			Name:  "file, f",
+			Value: "swarm-hooks.yml",
+			Usage: fmt.Sprintf("Set the filename of the configuration file."),
 		},
 	}
 	app.Before = func(c *cli.Context) error {
@@ -42,6 +51,9 @@ func Run() {
 		if !c.IsSet("log-level") && !c.IsSet("l") && c.Bool("debug") {
 			log.SetLevel(log.DebugLevel)
 		}
+
+		log.Printf("Using configuration file: %s", c.GlobalString("file"))
+		chains = chain.LoadFile(c.GlobalString("file"))
 
 		return nil
 	}
