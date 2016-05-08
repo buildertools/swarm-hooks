@@ -12,18 +12,18 @@ gulp.task('watch', function() {
 
 function doFmt(e) {
   var p = child.spawnSync('go', ['fmt', e.path]);
-  dumpStreams("STDOUT:\n", "STDERR:\n", p);
+  dumpStreams("go fmt:\n", "go fmt (stderr):\n", p);
   return p;
 }
 function doVet(e) {
   var p = child.spawnSync('go', ['vet', e.path]);
-  dumpStreams("STDOUT:\n", "STDERR:\n", p);
+  dumpStreams("go vet:\n", "go vet (stderr):\n", p);
   return p;
 }
 
 gulp.task('build', function() {
   var p = child.spawnSync('go', ['install']);
-  dumpStreams("STDOUT:\n", "STDERR:\n", p); 
+  dumpStreams("Target:\n", "Target (stderr):\n", p); 
   return p;
 });
 
